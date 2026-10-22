@@ -39,7 +39,7 @@ export default function Home() {
     loadResumes()
   }, []);
 
-  return <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+  return <main className="relative">
     <Navbar />
 
     <section className="main-section">
@@ -52,8 +52,10 @@ export default function Home() {
         )}
       </div>
       {loadingResumes && (
-          <div className="flex flex-col items-center justify-center">
-            <img src="/images/resume-scan-2.gif" className="w-[200px]" />
+          <div className="resumes-section opacity-60">
+            {[1, 2, 3].map((i) => (
+                <div key={i} className="flex flex-col gap-6 h-[560px] w-full lg:w-[450px] xl:w-[490px] bg-white/40 rounded-[2rem] p-8 border border-white/50 skeleton-box"></div>
+            ))}
           </div>
       )}
 

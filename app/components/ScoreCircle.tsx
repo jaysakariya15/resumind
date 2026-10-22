@@ -26,9 +26,13 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
                 {/* Partial circle with gradient */}
                 <defs>
                     <linearGradient id="grad" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#FF97AD" />
-                        <stop offset="100%" stopColor="#5171FF" />
+                        <stop offset="0%" stopColor="#4f46e5" />
+                        <stop offset="100%" stopColor="#ec4899" />
                     </linearGradient>
+                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
                 </defs>
                 <circle
                     cx="50"
@@ -40,6 +44,8 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
                     strokeDasharray={circumference}
                     strokeDashoffset={strokeDashoffset}
                     strokeLinecap="round"
+                    className="transition-all duration-1000 ease-out origin-center"
+                    filter="url(#glow)"
                 />
             </svg>
 
